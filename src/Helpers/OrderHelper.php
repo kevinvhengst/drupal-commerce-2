@@ -163,7 +163,7 @@ class OrderHelper {
    *
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
-  public function createOrderData($form, $payment, array $gatewayInfo) {
+  public function createOrderData($form, $payment, array $gatewayInfo = []) {
     // Get URLS.
     $redirectUrl = $form['#return_url'];
     $notification = $this->getNotifyUrl($payment)->toString();
