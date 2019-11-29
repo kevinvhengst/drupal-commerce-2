@@ -54,7 +54,7 @@ class Orders extends Core {
    * @return mixed
    *   Process get request
    */
-  public function get($type, $id, array $body, $query_string = FALSE) {
+  public function get($type, $id, array $body = [], $query_string = FALSE) {
     $result = parent::get($type, $id, $body, $query_string);
     $this->success = $result->success;
     $this->data = $result->data;
