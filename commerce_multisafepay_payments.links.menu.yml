@@ -1,0 +1,5 @@
+commerce_multisafepay_payments.settings:
+  title: 'MultiSafepay settings'
+  route_name: 'commerce_multisafepay_payments.settings'
+  parent: 'commerce_payment.configuration'
+  weight: 10

@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Helpers;
+namespace Drupal\commerce_multisafepay_payments\Helpers;
 
-use Drupal\commerce_multisafepay\API\Client;
+use Drupal\commerce_multisafepay_payments\API\Client;
 use Drupal\commerce_order\Adjustment;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItem;
@@ -57,7 +57,7 @@ class OrderHelper {
   /**
    * MultiSafepay API helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\ApiHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\ApiHelper
    */
   protected $mspApiHelper;
 
@@ -204,7 +204,7 @@ class OrderHelper {
     $drupalVersion = \Drupal::VERSION;
     $commerceVersion = system_get_info('module', 'commerce')['version'];
     $pluginVersion = system_get_info(
-      'module', 'commerce_multisafepay'
+      'module', 'commerce_multisafepay_payments'
     )['version'];
 
     $orderData = [
@@ -216,7 +216,7 @@ class OrderHelper {
       "items"            => $items,
       "description"      => $orderId,
       "seconds_active"   => \Drupal::config(
-        'commerce_multisafepay.settings'
+        'commerce_multisafepay_payments.settings'
       )->getRawData()['seconds_active'],
       "manual"           => "false",
       "payment_options"  => [

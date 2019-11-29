@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Helpers;
+namespace Drupal\commerce_multisafepay_payments\Helpers;
 
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 

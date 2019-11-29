@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Helpers;
+namespace Drupal\commerce_multisafepay_payments\Helpers;
 
-use Drupal\commerce_multisafepay\API\Client;
-use Drupal\commerce_multisafepay\Exceptions\ExceptionHelper;
+use Drupal\commerce_multisafepay_payments\API\Client;
+use Drupal\commerce_multisafepay_payments\Exceptions\ExceptionHelper;
 use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Entity\PaymentInterface;
@@ -54,7 +54,7 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
   /**
    * ExceptionHelper.
    *
-   * @var \Drupal\commerce_multisafepay\Exceptions\ExceptionHelper
+   * @var \Drupal\commerce_multisafepay_payments\Exceptions\ExceptionHelper
    */
   protected $exceptionHelper;
 

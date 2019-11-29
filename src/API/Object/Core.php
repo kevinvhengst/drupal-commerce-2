@@ -1,9 +1,9 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\API\Object;
+namespace Drupal\commerce_multisafepay_payments\API\Object;
 
-use Drupal\commerce_multisafepay\API\Client;
-use Drupal\commerce_multisafepay\Exceptions\ExceptionHelper;
+use Drupal\commerce_multisafepay_payments\API\Client;
+use Drupal\commerce_multisafepay_payments\Exceptions\ExceptionHelper;
 
 /**
  * Class Core.
@@ -20,14 +20,14 @@ class Core {
   /**
    * MSP Api.
    *
-   * @var \Drupal\commerce_multisafepay\API\Client
+   * @var \Drupal\commerce_multisafepay_payments\API\Client
    */
   protected $mspapi;
 
   /**
    * Core constructor.
    *
-   * @param \Drupal\commerce_multisafepay\API\Client $mspapi
+   * @param \Drupal\commerce_multisafepay_payments\API\Client $mspapi
    *   API client.
    */
   public function __construct(Client $mspapi) {

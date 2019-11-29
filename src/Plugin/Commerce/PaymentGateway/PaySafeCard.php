@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Plugin\Commerce\PaymentGateway;
+namespace Drupal\commerce_multisafepay_payments\Plugin\Commerce\PaymentGateway;
 
-use Drupal\commerce_multisafepay\Helpers\GatewayStandardMethodsHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\GatewayStandardMethodsHelper;
 use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsRefundsInterface;
 
 /**
@@ -17,7 +17,7 @@ use Drupal\commerce_payment\Plugin\Commerce\PaymentGateway\SupportsRefundsInterf
  *   },
  *   forms = {
  *     "offsite-payment" =
- *     "Drupal\commerce_multisafepay\PluginForm\StandardPayment\StandardPaymentForm",
+ *     "Drupal\commerce_multisafepay_payments\PluginForm\StandardPayment\StandardPaymentForm",
  *   },
  * )
  */

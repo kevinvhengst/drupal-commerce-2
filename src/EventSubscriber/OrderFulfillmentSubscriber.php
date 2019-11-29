@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\EventSubscriber;
+namespace Drupal\commerce_multisafepay_payments\EventSubscriber;
 
-use Drupal\commerce_multisafepay\API\Client;
-use Drupal\commerce_multisafepay\Helpers\ApiHelper;
-use Drupal\commerce_multisafepay\Helpers\GatewayHelper;
-use Drupal\commerce_multisafepay\Helpers\OrderHelper;
+use Drupal\commerce_multisafepay_payments\API\Client;
+use Drupal\commerce_multisafepay_payments\Helpers\ApiHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\GatewayHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\OrderHelper;
 use Drupal\Core\Entity\EntityTypeManager;
 use Drupal\Core\StringTranslation\StringTranslationTrait;
 use Drupal\state_machine\Event\WorkflowTransitionEvent;
@@ -28,28 +28,28 @@ class OrderFulfillmentSubscriber implements EventSubscriberInterface {
   /**
    * Gateway Helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\GatewayHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\GatewayHelper
    */
   protected $mspGatewayHelper;
 
   /**
    * Order Helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\OrderHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\OrderHelper
    */
   protected $mspOrderHelper;
 
   /**
    * Api Helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\ApiHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\ApiHelper
    */
   protected $mspApiHelper;
 
   /**
    * MSP Client.
    *
-   * @var \Drupal\commerce_multisafepay\API\Client
+   * @var \Drupal\commerce_multisafepay_payments\API\Client
    */
   protected $mspClient;
 

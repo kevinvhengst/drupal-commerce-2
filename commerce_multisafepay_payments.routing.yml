@@ -1,0 +1,7 @@
+commerce_multisafepay_payments.settings:
+  path: '/admin/config/commerce_multisafepay_payments'
+  defaults:
+    _form: '\Drupal\commerce_multisafepay_payments\PluginForm\SettingsForm'
+    _title: 'MultiSafepay configuration screen'
+  requirements:
+    _permission: 'administer site configuration'

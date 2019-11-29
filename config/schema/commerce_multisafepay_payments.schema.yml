@@ -1,5 +1,5 @@
 # this wil initialize the configuration types in the configuration storage
-commerce_multisafepay.settings:
+commerce_multisafepay_payments.settings:
   type: commerce_payment_gateway_configuration
   mapping:
     test_api_key:

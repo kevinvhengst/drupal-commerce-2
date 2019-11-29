@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Exceptions;
+namespace Drupal\commerce_multisafepay_payments\Exceptions;
 
 use Drupal\commerce_payment\Exception\PaymentGatewayException;
 

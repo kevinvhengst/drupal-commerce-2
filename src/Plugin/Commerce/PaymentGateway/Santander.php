@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Plugin\Commerce\PaymentGateway;
+namespace Drupal\commerce_multisafepay_payments\Plugin\Commerce\PaymentGateway;
 
-use Drupal\commerce_multisafepay\Helpers\GatewayStandardMethodsHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\GatewayStandardMethodsHelper;
 use Drupal\Core\Form\FormStateInterface;
 
 /**
@@ -14,7 +14,7 @@ use Drupal\Core\Form\FormStateInterface;
  *   display_label = "Santander",
  *   forms = {
  *     "offsite-payment" =
- *     "Drupal\commerce_multisafepay\PluginForm\StandardPayment\StandardPaymentForm",
+ *     "Drupal\commerce_multisafepay_payments\PluginForm\StandardPayment\StandardPaymentForm",
  *   },
  * )
  */

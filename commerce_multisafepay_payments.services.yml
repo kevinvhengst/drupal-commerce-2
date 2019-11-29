@@ -1,0 +1,6 @@
+services:
+  commerce_multisafepay_payments.fulfill:
+    class: Drupal\commerce_multisafepay_payments\EventSubscriber\OrderFulfillmentSubscriber
+    arguments: ['@entity_type.manager']
+    tags:
+      - { name: event_subscriber }

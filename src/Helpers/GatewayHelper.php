@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Helpers;
+namespace Drupal\commerce_multisafepay_payments\Helpers;
 
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_payment\Entity\PaymentGateway;
@@ -272,7 +272,7 @@ class GatewayHelper {
   /**
    * MultiSafepay order helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\OrderHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\OrderHelper
    */
   protected $mspOrderHelper;
 

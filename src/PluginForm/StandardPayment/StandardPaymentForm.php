@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\PluginForm\StandardPayment;
+namespace Drupal\commerce_multisafepay_payments\PluginForm\StandardPayment;
 
-use Drupal\commerce_multisafepay\API\Client;
-use Drupal\commerce_multisafepay\Helpers\ApiHelper;
-use Drupal\commerce_multisafepay\Helpers\GatewayHelper;
-use Drupal\commerce_multisafepay\Helpers\OrderHelper;
+use Drupal\commerce_multisafepay_payments\API\Client;
+use Drupal\commerce_multisafepay_payments\Helpers\ApiHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\GatewayHelper;
+use Drupal\commerce_multisafepay_payments\Helpers\OrderHelper;
 use Drupal\commerce_payment\PluginForm\PaymentOffsiteForm as BasePaymentOffsiteForm;
 use Drupal\Core\Form\FormStateInterface;
 
@@ -17,28 +17,28 @@ class StandardPaymentForm extends BasePaymentOffsiteForm {
   /**
    * MultiSafepay order helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\OrderHelperOrderHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\OrderHelperOrderHelper
    */
   protected $mspOrderHelper;
 
   /**
    * Gateway helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\GatewayHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\GatewayHelper
    */
   protected $mspGatewayHelper;
 
   /**
    * Api helper.
    *
-   * @var \Drupal\commerce_multisafepay\Helpers\ApiHelper
+   * @var \Drupal\commerce_multisafepay_payments\Helpers\ApiHelper
    */
   protected $mspApiHelper;
 
   /**
    * MSP Client.
    *
-   * @var \Drupal\commerce_multisafepay\API\Client
+   * @var \Drupal\commerce_multisafepay_payments\API\Client
    */
   protected $mspClient;
 

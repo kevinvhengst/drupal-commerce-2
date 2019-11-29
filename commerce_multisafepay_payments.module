@@ -19,7 +19,7 @@ use Drupal\Core\Form\FormStateInterface;
  * @param int $formId
  *   The form id.
  */
-function commerce_multisafepay_form_alter(
+function commerce_multisafepay_payments_form_alter(
   &$form,
   FormStateInterface $formState,
   $formId

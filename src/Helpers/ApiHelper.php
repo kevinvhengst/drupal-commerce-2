@@ -1,8 +1,8 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\Helpers;
+namespace Drupal\commerce_multisafepay_payments\Helpers;
 
-use Drupal\commerce_multisafepay\API\Client;
+use Drupal\commerce_multisafepay_payments\API\Client;
 
 /**
  * Class ApiHelper.
@@ -12,7 +12,7 @@ class ApiHelper {
   /**
    * Set the api settings.
    *
-   * @param \Drupal\commerce_multisafepay\API\Client $client
+   * @param \Drupal\commerce_multisafepay_payments\API\Client $client
    *   MSP client.
    * @param string $mode
    *   Mode the payment gateway is using (test / live /
@@ -21,14 +21,14 @@ class ApiHelper {
   public function setApiSettings(Client $client, $mode) {
 
     // Get the needed Data to set the setting.
-    $testApiKey = \Drupal::config('commerce_multisafepay.settings')
+    $testApiKey = \Drupal::config('commerce_multisafepay_payments.settings')
       ->getRawData()['test_api_key'];
-    $liveApiKey = \Drupal::config('commerce_multisafepay.settings')
+    $liveApiKey = \Drupal::config('commerce_multisafepay_payments.settings')
       ->getRawData()['live_api_key'];
 
     // Check if the gateway is N/A.
     if ($mode === "n/a") {
-      $mode = \Drupal::config('commerce_multisafepay.settings')
+      $mode = \Drupal::config('commerce_multisafepay_payments.settings')
         ->getRawData()['account_type'];
     }
 

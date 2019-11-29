@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\PluginForm;
+namespace Drupal\commerce_multisafepay_payments\PluginForm;
 
 use Drupal\Core\Form\ConfigFormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -17,7 +17,7 @@ class SettingsForm extends ConfigFormBase {
    *   Get form id
    */
   public function getFormId() {
-    return 'commerce_multisafepay_admin_settings';
+    return 'commerce_multisafepay_payments_admin_settings';
   }
 
   /**
@@ -28,7 +28,7 @@ class SettingsForm extends ConfigFormBase {
    */
   protected function getEditableConfigNames() {
     return [
-      'commerce_multisafepay.settings',
+      'commerce_multisafepay_payments.settings',
     ];
   }
 
@@ -45,7 +45,7 @@ class SettingsForm extends ConfigFormBase {
    */
   public function buildForm(array $form, FormStateInterface $form_state) {
     // Get the current data.
-    $config = $this->config('commerce_multisafepay.settings');
+    $config = $this->config('commerce_multisafepay_payments.settings');
 
     // Plugin Status select field (Test or Live) & get the plugin status if
     // user has selected it before.
@@ -101,7 +101,7 @@ class SettingsForm extends ConfigFormBase {
     $secondsActive = $form_state->getValue('seconds_active');
 
     // Retrieve the configuration.
-    $this->configFactory->getEditable('commerce_multisafepay.settings')
+    $this->configFactory->getEditable('commerce_multisafepay_payments.settings')
       // Set the submitted configuration setting.
       ->set('live_api_key', $liveApiKey)
       ->set('test_api_key', $testApiKey)

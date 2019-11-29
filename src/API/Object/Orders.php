@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\API\Object;
+namespace Drupal\commerce_multisafepay_payments\API\Object;
 
 /**
  * Class Orders.

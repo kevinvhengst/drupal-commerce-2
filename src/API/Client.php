@@ -1,11 +1,11 @@
 <?php
 
-namespace Drupal\commerce_multisafepay\API;
+namespace Drupal\commerce_multisafepay_payments\API;
 
-use Drupal\commerce_multisafepay\Exceptions\ExceptionHelper;
-use Drupal\commerce_multisafepay\API\Object\Gateways;
-use Drupal\commerce_multisafepay\API\Object\Issuers;
-use Drupal\commerce_multisafepay\API\Object\Orders;
+use Drupal\commerce_multisafepay_payments\Exceptions\ExceptionHelper;
+use Drupal\commerce_multisafepay_payments\API\Object\Gateways;
+use Drupal\commerce_multisafepay_payments\API\Object\Issuers;
+use Drupal\commerce_multisafepay_payments\API\Object\Orders;
 
 /**
  * Class Client.
@@ -15,14 +15,14 @@ class Client {
   /**
    * MSP Orders.
    *
-   * @var \Drupal\commerce_multisafepay\API\Object\Orders
+   * @var \Drupal\commerce_multisafepay_payments\API\Object\Orders
    */
   public $orders;
 
   /**
    * MSP issuers.
    *
-   * @var \Drupal\commerce_multisafepay\API\Object\Issuers
+   * @var \Drupal\commerce_multisafepay_payments\API\Object\Issuers
    */
   public $issuers;
 
@@ -36,7 +36,7 @@ class Client {
   /**
    * MSP gateways.
    *
-   * @var \Drupal\commerce_multisafepay\API\Object\Gateways
+   * @var \Drupal\commerce_multisafepay_payments\API\Object\Gateways
    */
   public $gateways;
 
@@ -85,7 +85,7 @@ class Client {
   /**
    * Exception helper.
    *
-   * @var \Drupal\commerce_multisafepay\Exceptions\ExceptionHelper
+   * @var \Drupal\commerce_multisafepay_payments\Exceptions\ExceptionHelper
    */
   protected $exceptionHelper;
 
