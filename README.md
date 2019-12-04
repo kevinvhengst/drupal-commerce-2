@@ -17,10 +17,13 @@ The supported Payment Methods & Gift cards for this plugin can be found over her
 - Drupal Commerce 2.x.
 
 ## Installation
-1. Download the zip from [Github Releases](https://github.com/MultiSafepay/drupal-commerce-2/releases) or from our [documentation center](https://docs.multisafepay.com/plugins/drupal8/). 
-2. Go to 'Extend' and click on the 'Add module' button
-3. Place your newly downloaded zip in the upload field.
-4. Activate your module within your 'Extend' page.
+For installing the latest stable version of our Drupal Commerce 2.x plugin please run the following command in your terminal
+
+```
+composer require drupal/commerce_multisafepay_payments
+```
+
+After running these commands, the latest stable release is downloaded and installed within your Drupal Commerce 2.x webshop.
 
 For additional information or instructions please see our [installation & configuration manual](https://docs.multisafepay.com/plugins/drupal8/manual/)
  
