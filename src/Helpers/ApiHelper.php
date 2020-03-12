@@ -19,17 +19,15 @@ class ApiHelper {
    *   n/a)
    */
   public function setApiSettings(Client $client, $mode) {
+    $config = \Drupal::config('commerce_multisafepay_payments.settings');
 
     // Get the needed Data to set the setting.
-    $testApiKey = \Drupal::config('commerce_multisafepay_payments.settings')
-      ->getRawData()['test_api_key'];
-    $liveApiKey = \Drupal::config('commerce_multisafepay_payments.settings')
-      ->getRawData()['live_api_key'];
+    $testApiKey = $config->get('test_api_key');
+    $liveApiKey = $config->get('live_api_key');
 
     // Check if the gateway is N/A.
     if ($mode === "n/a") {
-      $mode = \Drupal::config('commerce_multisafepay_payments.settings')
-        ->getRawData()['account_type'];
+      $mode = $config->get('account_type');
     }
 
     // Check if the account type is set to Test Or live.
