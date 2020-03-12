@@ -4,6 +4,7 @@ namespace Drupal\commerce_multisafepay_payments\Helpers;
 
 use Drupal\commerce_multisafepay_payments\API\Client;
 use Drupal\commerce_order\Adjustment;
+use Drupal\commerce_order\Entity\Order;
 use Drupal\commerce_order\Entity\OrderInterface;
 use Drupal\commerce_order\Entity\OrderItem;
 use Drupal\commerce_price\Price;
@@ -169,8 +170,9 @@ class OrderHelper {
     $notification = $this->getNotifyUrl($payment)->toString();
     $cancelUrl = $form['#cancel_url'];
 
+    /** @var \Drupal\commerce_order\Entity\Order $order */
     $order = $payment->getOrder();
-    $orderId = $payment->getOrderId();
+    $orderId = $orderNumber = $order->getOrderNumber() ?: $payment->getOrderId();
     $currency = $payment->getAmount()->getCurrencyCode();
     $amount = $payment->getAmount()->getNumber();
     // Convert to cents.
@@ -926,7 +928,8 @@ class OrderHelper {
 
     $this->mspApiHelper->setApiSettings($client, $mode);
 
-    $mspOrder = $client->orders->get('orders', $order->id());
+    $orderId = $orderNumber = $order->getOrderNumber() ?: $order->id();
+    $mspOrder = $client->orders->get('orders', $orderId);
     $gateway = $order->get('payment_gateway')->first()->entity;
 
     $this->logStorage->generate($order, $log)->setParams(

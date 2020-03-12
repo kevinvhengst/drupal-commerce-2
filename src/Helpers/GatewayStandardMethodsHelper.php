@@ -144,13 +144,13 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
    *
    * @param \Drupal\commerce_order\Entity\OrderInterface $order
    *   The order.
-   * @param int $orderId
+   * @param int $transactionId
    *   Order id.
    *
    * @return mixed|\Symfony\Component\HttpFoundation\Response
    *   Response given to MSP MCP or get order if gateway is from MSP
    */
-  public function getMspOrder(OrderInterface $order, $orderId) {
+  public function getMspOrder(OrderInterface $order, $transactionId) {
     $client = new Client();
 
     // Get current gateway & Check if it is a MSP gateway.
@@ -165,7 +165,7 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
     // Set the API settings.
     $this->mspApiHelper->setApiSettings($client, $mode);
 
-    return $client->orders->get('orders', $orderId);
+    return $client->orders->get('orders', $transactionId);
   }
 
   /**
@@ -179,13 +179,16 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
    */
   public function onNotify(Request $request) {
     // Get the order id & check if there's no transaction id.
-    $orderId = $request->get('transactionid');
-    if (empty($orderId)) {
+    $transactionId = $request->get('transactionid');
+    if (empty($transactionId)) {
       return new Response('Error 500', 500);
     }
 
     // Get the order & Check if order is not null.
-    $order = Order::load($orderId);
+    if (!$order = Order::load($transactionId)) {
+      $order = $this->getOrderFromOrderNumber($transactionId);
+    }
+
     if (is_null($order)) {
       return new Response("Order does not exist");
     };
@@ -194,7 +197,7 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
     $gateway = $order->get('payment_gateway')->first()->entity;
 
     // Get the MSP order & check if payment details has been found.
-    $mspOrder = $this->getMspOrder($order, $orderId);
+    $mspOrder = $this->getMspOrder($order, $transactionId);
 
     if (!isset($mspOrder->payment_details)) {
       return new Response("No payment details found");
@@ -297,7 +300,8 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
     Price $amount = NULL
   ) {
     // Get all data.
-    $orderId = $payment->getOrderId();
+    $order = $payment->getOrder();
+    $orderId = $orderNumber = $order->getOrderNumber() ?: $payment->getOrderId();
     $currency = $amount->getCurrencyCode();
 
     // If not specified, refund the entire amount.
@@ -344,6 +348,30 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
 
     // Place log in order.
     $this->mspOrderHelper->logMsp($payment->getOrder(), $logfile);
+  }
+
+  /**
+   * Check if we can get an order from the the Order number.
+   *
+   * @param int $transactionId
+   *   Transaction id.
+   *
+   * @return \Drupal\commerce_order\Entity\OrderInterface|null
+   *   Get the order. If it is not found, return null.
+   *
+   * @throws \Drupal\Component\Plugin\Exception\InvalidPluginDefinitionException
+   * @throws \Drupal\Component\Plugin\Exception\PluginNotFoundException
+   */
+  public function getOrderFromOrderNumber($transactionId) {
+    if (!$orders = $this->entityTypeManager->getStorage('commerce_order')->loadByProperties(['order_number' => $transactionId])) {
+      return NULL;
+    }
+
+    if (!$order = reset($orders)) {
+      return NULL;
+    }
+
+    return $order;
   }
 
 }
