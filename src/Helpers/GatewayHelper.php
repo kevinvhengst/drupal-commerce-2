@@ -17,6 +17,11 @@ class GatewayHelper {
     = [
       'gateways' => [
         // Redirects.
+        'msp_directbanktransfer'       => [
+          'code'          => 'DBRTP',
+          'type'          => 'redirect',
+          'shopping_cart' => FALSE,
+        ],
         'msp_belfius'                  => [
           'code'          => 'BELFIUS',
           'type'          => 'redirect',
