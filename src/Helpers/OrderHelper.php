@@ -70,6 +70,13 @@ class OrderHelper {
   protected $logStorage;
 
   /**
+   * Drupal module handler.
+   *
+   * @var \Drupal\Core\Extension\ModuleHandlerInterface
+   */
+  protected $moduleHandler;
+
+  /**
    * OrderHelper constructor.
    */
   public function __construct() {
@@ -77,6 +84,7 @@ class OrderHelper {
     $this->logStorage = \Drupal::entityTypeManager()->getStorage(
       'commerce_log'
     );
+    $this->moduleHandler = \Drupal::moduleHandler();
   }
 
   /**
@@ -239,6 +247,9 @@ class OrderHelper {
         "partner"        => "MultiSafepay",
       ],
     ];
+
+    /* Hook commerce_multisafepay_payments_multisafepay_orderdata_PAYMENT_METHOD_alter */
+    $this->moduleHandler->alter('multisafepay_orderdata_' . strtolower($gatewayCode), $orderData, $payment, $gatewayInfo);
 
     return $orderData;
   }
