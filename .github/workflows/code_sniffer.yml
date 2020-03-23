@@ -1,0 +1,14 @@
+name: Code sniffer
+on: pull_request
+jobs:
+  code_sniffer:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+      - name: Download drupal coding standard
+        run: composer global require drupal/coder
+      - name: Check current folder
+        run: pwd
+      - name: Run code sniffer
+        run: /home/runner/.config/composer/vendor/bin/phpcs --standard=/home/runner/.config/composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml -n .
