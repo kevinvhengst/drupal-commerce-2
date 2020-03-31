@@ -27,6 +27,11 @@ class GatewayHelper {
           'type'          => 'redirect',
           'shopping_cart' => FALSE,
         ],
+        'msp_applepay'                  => [
+          'code'          => 'APPLEPAY',
+          'type'          => 'redirect',
+          'shopping_cart' => FALSE,
+        ],
         'msp_mistercash'               => [
           'code'          => 'MISTERCASH',
           'type'          => 'redirect',

@@ -1,0 +1,4 @@
+applepay:
+  version: 1.x
+  js:
+    src/js/applepay.js: {}
