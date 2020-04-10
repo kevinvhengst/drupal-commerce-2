@@ -33,7 +33,7 @@ class Orders extends Core {
    *   Process patch request
    */
   public function patch(array $body, $endpoint = '') {
-    $result = parent::patch(json_encode($body), $endpoint);
+    $result = parent::patch($body, $endpoint);
     $this->success = $result->success;
     $this->data = $result->data;
     return $result;
@@ -73,7 +73,7 @@ class Orders extends Core {
    *   Process post request
    */
   public function post(array $body, $endpoint = 'orders') {
-    $result = parent::post(json_encode($body), $endpoint);
+    $result = parent::post($body, $endpoint);
     $this->success = $result->success;
     $this->data = $result->data;
     return $this->data;

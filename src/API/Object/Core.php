@@ -37,7 +37,7 @@ class Core {
   /**
    * Create post request.
    *
-   * @param string $body
+   * @param array $body
    *   JSON request posted to MultiSafepay.
    * @param string $endpoint
    *   The endpoint of the URL.
@@ -45,7 +45,7 @@ class Core {
    * @return mixed
    *   Process the given request
    */
-  public function post($body, $endpoint = 'orders') {
+  public function post(array $body, $endpoint = 'orders') {
     $this->result = $this->processRequest('POST', $endpoint, $body);
     return $this->result;
   }
@@ -57,7 +57,7 @@ class Core {
    *   GET / POST / PATCH.
    * @param string $api_method
    *   Endpoint.
-   * @param null|string $http_body
+   * @param null|array $http_body
    *   The request.
    *
    * @return mixed
@@ -68,8 +68,9 @@ class Core {
     $api_method,
     $http_body
   ) {
+    $json = json_encode($http_body);
     $body = $this->mspapi->processApiRequest(
-      $http_method, $api_method, $http_body
+      $http_method, $api_method, $json
     );
     $exceptionHelper = new ExceptionHelper();
     if (!($object = @json_decode($body))) {
@@ -87,7 +88,7 @@ class Core {
   /**
    * Create PATCH request.
    *
-   * @param string $body
+   * @param array $body
    *   The json request.
    * @param string $endpoint
    *   Endpoint.
@@ -95,7 +96,7 @@ class Core {
    * @return mixed
    *   process patch request
    */
-  public function patch($body, $endpoint = '') {
+  public function patch(array $body, $endpoint = '') {
     $this->result = $this->processRequest('PATCH', $endpoint, $body);
     return $this->result;
   }
@@ -117,7 +118,7 @@ class Core {
    *   Endpoint.
    * @param string $id
    *   Order id.
-   * @param string $body
+   * @param array $body
    *   The request.
    * @param bool $query_string
    *   How the request should be handled.
@@ -125,7 +126,7 @@ class Core {
    * @return mixed
    *   Process get request
    */
-  public function get($endpoint, $id, $body, $query_string = FALSE) {
+  public function get($endpoint, $id, array $body, $query_string = FALSE) {
     if (!$query_string) {
       $url = "{$endpoint}/{$id}";
     }

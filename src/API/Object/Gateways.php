@@ -43,7 +43,7 @@ class Gateways extends Core {
     $query_string = FALSE
   ) {
     $result = parent::get(
-      $endpoint, $type, json_encode($body), $query_string
+      $endpoint, $type, $body, $query_string
     );
     $this->success = $result->success;
     $this->data = $result->data;
