@@ -10,8 +10,8 @@ use Drupal\Core\Form\FormStateInterface;
  *
  * @CommercePaymentGateway(
  *   id = "msp_santander",
- *   label = "MultiSafepay (Santander)",
- *   display_label = "Santander",
+ *   label = "MultiSafepay (Santander Consumer Finance | Betaal per Maand)",
+ *   display_label = "Santander Consumer Finance | Betaal per Maand",
  *   forms = {
  *     "offsite-payment" =
  *     "Drupal\commerce_multisafepay_payments\PluginForm\StandardPayment\StandardPaymentForm",
