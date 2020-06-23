@@ -6,9 +6,7 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      - name: Download drupal coding standard
-        run: composer global require drupal/coder
-      - name: Check current folder
-        run: pwd
+      - name: Composer install
+        run: composer install
       - name: Run code sniffer
-        run: /home/runner/.config/composer/vendor/bin/phpcs --standard=/home/runner/.config/composer/vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml -n .
+        run: vendor/bin/phpcs --standard=vendor/drupal/coder/coder_sniffer/Drupal/ruleset.xml -n src/
