@@ -247,7 +247,7 @@ class OrderHelper {
     ];
 
     /* Hook commerce_multisafepay_payments_multisafepay_orderdata_PAYMENT_METHOD_alter */
-    $this->moduleHandler->alter('multisafepay_orderdata_' . strtolower($gatewayCode), $orderData, $payment, $gatewayInfo);
+    $this->moduleHandler->alter(['multisafepay_orderdata_' . strtolower($gatewayCode), 'multisafepay_orderdata'], $orderData, $payment, $gatewayInfo);
 
     return $orderData;
   }
