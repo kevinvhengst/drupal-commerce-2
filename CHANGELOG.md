@@ -1,4 +1,23 @@
-## 8.x-1.1.0
+## 8.x-2.0
+Release date: Jun 24th, 2020
+
+### Added
++ PLGDC8-41: Add Commerce Log dependency
++ PLGDC8-42: Add core_version_requirement for Drupal 8.8 or higher and Drupal 9 compatibility
+
+### Fixed
++ PLGDC8-40: Fix undefined function system_get_info
++ PLGDC8-37: Fix order is completed twice - Issue #3136434 by j3ll3nl
++ Fix multisafepay_orderdata hook - by kevinvhengst
++ PLGDC8-34: Fix undefined index by only hooking into checkout forms - Issue #3125598 by corneboele
++ PLGDC8-27: Fix API object compatibility warning with PHP 7 - Issue #3117427 by corneboele, j3ll3nl
+
+### Changed
++ DAVAMS-225: Rename Santander Betaalplan to Santander Betaal per Maand
+
+***
+
+## 8.x-1.1
 Release date: Apr 1st, 2020
 
 ### Added
