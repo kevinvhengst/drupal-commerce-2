@@ -212,10 +212,8 @@ class OrderHelper {
     }
 
     $drupalVersion = \Drupal::VERSION;
-    $commerceVersion = system_get_info('module', 'commerce')['version'];
-    $pluginVersion = system_get_info(
-      'module', 'commerce_multisafepay_payments'
-    )['version'];
+    $commerceVersion = \Drupal::service('extension.list.module')->getExtensionInfo('commerce')['version'] ?? 'unknown';
+    $pluginVersion = \Drupal::service('extension.list.module')->getExtensionInfo('commerce_multisafepay_payments')['version'] ?? 'unknown';
 
     $orderData = [
       "type"             => $type,
@@ -249,7 +247,7 @@ class OrderHelper {
     ];
 
     /* Hook commerce_multisafepay_payments_multisafepay_orderdata_PAYMENT_METHOD_alter */
-    $this->moduleHandler->alter('multisafepay_orderdata_' . strtolower($gatewayCode), $orderData, $payment, $gatewayInfo);
+    $this->moduleHandler->alter(['multisafepay_orderdata_' . strtolower($gatewayCode), 'multisafepay_orderdata'], $orderData, $payment, $gatewayInfo);
 
     return $orderData;
   }

@@ -2,9 +2,10 @@ name: Commerce MultiSafepay Payments
 type: module
 description: 'Drupal Commerce 2.x MultiSafepay integration'
 package: Commerce (contrib)
-core: 8.x
+core_version_requirement: ^8.8 || ^9
 dependencies:
   - commerce:commerce_payment
+  - commerce:commerce_log
 configure: commerce_multisafepay_payments.settings
 'interface translation project': MultiSafepay
 'interface translation server pattern': modules/contrib/commerce_multisafepay_payments/translations/%project.%language.po

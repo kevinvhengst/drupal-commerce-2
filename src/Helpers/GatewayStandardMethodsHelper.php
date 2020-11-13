@@ -122,6 +122,11 @@ class GatewayStandardMethodsHelper extends OffsitePaymentGatewayBase implements
    * @throws \Drupal\Core\TypedData\Exception\MissingDataException
    */
   public function nextStep(OrderInterface $order, $mspOrder) {
+    // Load order from database to prevent cached order state.
+    $orderStorage = $this->entityTypeManager->getStorage('commerce_order');
+    $orderStorage->resetCache([$order->id()]);
+    $order = $orderStorage->load($order->id());
+
     $stateItem = $order->get('state')->first();
     $currentState = $stateItem->getValue();
 

@@ -24,6 +24,9 @@ function commerce_multisafepay_payments_form_alter(
   FormStateInterface $formState,
   $formId
 ) {
+  if (!isset($form['#step_id'])) {
+      return;
+  }
 
   if ($form['#step_id'] == 'order_information') {
     $name = null;
@@ -40,7 +43,7 @@ function commerce_multisafepay_payments_form_alter(
     }
   }
   // Check if the page is on review page.
-  if (!empty($form['#step_id']) && $form['#step_id'] == 'review') {
+  if ($form['#step_id'] == 'review') {
     // Get Build info.
     $buildInfo = $formState->getBuildInfo();
 
